@@ -11,8 +11,9 @@ import com.example.orgs.model.Products
 
 class ProductListAdapter(
     private val context: Context,
-    private val products: List<Products>
+    products: List<Products>
 ) : RecyclerView.Adapter<ProductListAdapter.ViewHolder>() {
+    private val products = products.toMutableList()
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun link(product: Products) {
@@ -40,4 +41,9 @@ class ProductListAdapter(
         holder.link(product)
     }
 
+    fun update(products: List<Products>) {
+        this.products.clear()
+        this.products.addAll(products)
+        notifyDataSetChanged()
+    }
 }

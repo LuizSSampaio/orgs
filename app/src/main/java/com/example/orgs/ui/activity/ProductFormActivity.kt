@@ -13,26 +13,33 @@ class ProductFormActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_form)
+        configureSaveButton()
+    }
 
-        val nameField = findViewById<EditText>(R.id.editName)
-        val descriptionField = findViewById<EditText>(R.id.editDescription)
-        val priceField = findViewById<EditText>(R.id.editPrice)
+    private fun configureSaveButton() {
         val saveButton = findViewById<Button>(R.id.saveButton)
         saveButton.setOnClickListener {
-            val priceString = priceField.text.toString()
-            val price = if (priceString.isBlank()) {
-                BigDecimal.ZERO
-            } else {
-                BigDecimal(priceString)
-            }
-
-            val newProduct = Products(
-                nameField.text.toString(),
-                descriptionField.text.toString(),
-                price
-            )
+            val newProduct = createProduct()
             DAOProducts().addProduct(newProduct)
             finish()
         }
+    }
+
+    private fun createProduct(): Products {
+        val nameField = findViewById<EditText>(R.id.editName)
+        val descriptionField = findViewById<EditText>(R.id.editDescription)
+        val priceField = findViewById<EditText>(R.id.editPrice)
+        val priceString = priceField.text.toString()
+        val price = if (priceString.isBlank()) {
+            BigDecimal.ZERO
+        } else {
+            BigDecimal(priceString)
+        }
+
+        return Products(
+            nameField.text.toString(),
+            descriptionField.text.toString(),
+            price
+        )
     }
 }
