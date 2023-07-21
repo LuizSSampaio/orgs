@@ -4,4 +4,5 @@
     <string name="editDescription">Description</string>
     <string name="editPrice">Price</string>
     <string name="buttonSave">Save</string>
+    <string name="goToFormFloatingActionButton">Go to add item page</string>
 </resources>

@@ -1,11 +1,13 @@
 package com.example.orgs.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.orgs.R
 import com.example.orgs.model.Products
 import com.example.orgs.ui.recyclerView.adapter.ProductListAdapter
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.math.BigDecimal
 
 class MainActivity : AppCompatActivity() {
@@ -32,5 +34,10 @@ class MainActivity : AppCompatActivity() {
                 )
             )
         )
+        val goToFormFAB = findViewById<FloatingActionButton>(R.id.goToFormFAB)
+        goToFormFAB.setOnClickListener {
+            val intent = Intent(this, ProductFormActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
