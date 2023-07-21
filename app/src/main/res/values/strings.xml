@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Orgs</string>
+    <string name="editName">Name</string>
+    <string name="editDescription">Description</string>
+    <string name="editPrice">Price</string>
+    <string name="buttonSave">Save</string>
 </resources>
