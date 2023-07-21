@@ -2,11 +2,10 @@ package com.example.orgs.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import com.example.orgs.R
+import com.example.orgs.dao.DAOProducts
 import com.example.orgs.model.Products
 import java.math.BigDecimal
 
@@ -24,7 +23,7 @@ class ProductFormActivity : AppCompatActivity() {
             val price = if (priceString.isBlank()) {
                 BigDecimal.ZERO
             } else {
-                BigDecimal(priceString.toString())
+                BigDecimal(priceString)
             }
 
             val newProduct = Products(
@@ -32,6 +31,8 @@ class ProductFormActivity : AppCompatActivity() {
                 descriptionField.text.toString(),
                 price
             )
+            DAOProducts().addProduct(newProduct)
+            finish()
         }
     }
 }
