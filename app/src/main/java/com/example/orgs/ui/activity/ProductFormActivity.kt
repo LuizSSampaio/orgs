@@ -6,18 +6,22 @@ import android.widget.Button
 import android.widget.EditText
 import com.example.orgs.R
 import com.example.orgs.dao.DAOProducts
+import com.example.orgs.databinding.ActivityProductFormBinding
+import com.example.orgs.databinding.ActivityProductListBinding
 import com.example.orgs.model.Products
 import java.math.BigDecimal
 
 class ProductFormActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityProductFormBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_product_form)
+        binding = ActivityProductFormBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         configureSaveButton()
     }
 
     private fun configureSaveButton() {
-        val saveButton = findViewById<Button>(R.id.saveButton)
+        val saveButton = binding.saveButton
         saveButton.setOnClickListener {
             val newProduct = createProduct()
             DAOProducts().addProduct(newProduct)
@@ -26,9 +30,9 @@ class ProductFormActivity : AppCompatActivity() {
     }
 
     private fun createProduct(): Products {
-        val nameField = findViewById<EditText>(R.id.editName)
-        val descriptionField = findViewById<EditText>(R.id.editDescription)
-        val priceField = findViewById<EditText>(R.id.editPrice)
+        val nameField = binding.editName
+        val descriptionField = binding.editDescription
+        val priceField = binding.editPrice
         val priceString = priceField.text.toString()
         val price = if (priceString.isBlank()) {
             BigDecimal.ZERO

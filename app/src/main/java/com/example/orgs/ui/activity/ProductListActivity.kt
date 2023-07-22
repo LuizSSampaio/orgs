@@ -3,17 +3,17 @@ package com.example.orgs.ui.activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
-import com.example.orgs.R
 import com.example.orgs.dao.DAOProducts
+import com.example.orgs.databinding.ActivityProductListBinding
 import com.example.orgs.ui.recyclerView.adapter.ProductListAdapter
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class ProductListActivity : AppCompatActivity() {
     private val recyclerAdapter = ProductListAdapter(this, DAOProducts().getAllItems())
+    private lateinit var binding: ActivityProductListBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_product_list)
+        binding = ActivityProductListBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         configureFAB()
     }
 
@@ -23,13 +23,13 @@ class ProductListActivity : AppCompatActivity() {
     }
 
     private fun updateRecyclerView() {
-        val recyclerView = findViewById<RecyclerView>(R.id.itemList)
+        val recyclerView = binding.itemList
         recyclerAdapter.update(DAOProducts().getAllItems())
         recyclerView.adapter = recyclerAdapter
     }
 
     private fun configureFAB() {
-        val goToFormFAB = findViewById<FloatingActionButton>(R.id.goToFormFAB)
+        val goToFormFAB = binding.goToFormFAB
         goToFormFAB.setOnClickListener {
             goToFormView()
         }
