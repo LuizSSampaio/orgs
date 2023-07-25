@@ -11,48 +11,85 @@
         android:layout_height="wrap_content"
         tools:context=".ui.activity.ProductFormActivity">
 
-        <EditText
-            android:id="@+id/editName"
+        <ImageView
+            android:id="@+id/imageSelector"
             android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:importantForAccessibility="no"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@android:color/holo_blue_dark"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nameInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
             android:hint="@string/editName"
-            android:importantForAutofill="no"
-            android:inputType="text"
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="VisualLintTextFieldSize" />
+            app:layout_constraintTop_toBottomOf="@id/imageSelector">
 
-        <EditText
-            android:id="@+id/editDescription"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                tools:ignore="VisualLintTextFieldSize" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/descriptionInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
             android:hint="@string/editDescription"
-            android:importantForAutofill="no"
-            android:inputType="text"
             android:minHeight="48dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editName"
-            tools:ignore="VisualLintTextFieldSize" />
+            app:layout_constraintEnd_toEndOf="@id/nameInputLayout"
+            app:layout_constraintStart_toStartOf="@id/nameInputLayout"
+            app:layout_constraintTop_toBottomOf="@id/nameInputLayout">
 
-        <EditText
-            android:id="@+id/editPrice"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                tools:ignore="VisualLintTextFieldSize" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/priceInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
             android:hint="@string/editPrice"
-            android:importantForAutofill="no"
-            android:inputType="numberDecimal"
             android:minHeight="48dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editDescription"
-            tools:ignore="VisualLintTextFieldSize" />
+            app:layout_constraintEnd_toEndOf="@id/descriptionInputLayout"
+            app:layout_constraintStart_toStartOf="@id/descriptionInputLayout"
+            app:layout_constraintTop_toBottomOf="@id/descriptionInputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:importantForAutofill="no"
+                android:inputType="numberDecimal"
+                tools:ignore="VisualLintTextFieldSize" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/saveButton"
@@ -63,7 +100,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editPrice"
+            app:layout_constraintTop_toBottomOf="@id/priceInputLayout"
             app:layout_constraintVertical_bias="1"
             tools:ignore="VisualLintButtonSize" />
 
