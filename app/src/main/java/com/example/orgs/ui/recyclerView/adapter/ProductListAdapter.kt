@@ -3,9 +3,7 @@ package com.example.orgs.ui.recyclerView.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.orgs.R
 import com.example.orgs.databinding.ProductItemBinding
 import com.example.orgs.model.Products
 
@@ -21,14 +19,22 @@ class ProductListAdapter(
         private val itemPrice = binding.itemPrice
 
         fun link(product: Products) {
+            val price = "\$" + product.price.toPlainString()
+
             itemName.text = product.name
             itemContent.text = product.description
-            itemPrice.text = "\$${product.price.toPlainString()}"
+            itemPrice.text = price
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ProductItemBinding.inflate(LayoutInflater.from(context), parent, false)
+        val binding = ProductItemBinding
+            .inflate(
+                LayoutInflater.from(context),
+                parent,
+                false
+            )
+
         return ViewHolder(binding)
     }
 
