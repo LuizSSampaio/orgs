@@ -15,8 +15,23 @@ class ProductFormActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityProductFormBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        AlertDialog.Builder(this).setView(R.layout.image_form).show()
+        configureImageSelector()
         configureSaveButton()
+    }
+
+    private fun configureImageSelector() {
+        val imageSelector = binding.imageSelector
+        imageSelector.setOnClickListener {
+            AlertDialog.Builder(this)
+                .setView(R.layout.image_form)
+                .setPositiveButton("Save") {_, _ ->
+
+                }
+                .setNegativeButton("Cancel") {_, _ ->
+
+                }
+                .show()
+        }
     }
 
     private fun configureSaveButton() {
