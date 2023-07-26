@@ -2,12 +2,10 @@ package com.example.orgs.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
+import androidx.appcompat.app.AlertDialog
 import com.example.orgs.R
 import com.example.orgs.dao.DAOProducts
 import com.example.orgs.databinding.ActivityProductFormBinding
-import com.example.orgs.databinding.ActivityProductListBinding
 import com.example.orgs.model.Products
 import java.math.BigDecimal
 
@@ -17,6 +15,7 @@ class ProductFormActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityProductFormBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        AlertDialog.Builder(this).setView(R.layout.image_form).show()
         configureSaveButton()
     }
 
