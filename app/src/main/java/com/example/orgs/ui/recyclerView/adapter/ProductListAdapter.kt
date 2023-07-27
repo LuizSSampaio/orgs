@@ -1,9 +1,11 @@
 package com.example.orgs.ui.recyclerView.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.orgs.databinding.ProductItemBinding
 import com.example.orgs.model.Products
 
@@ -17,6 +19,7 @@ class ProductListAdapter(
         private val itemName = binding.itemName
         private val itemContent = binding.itemContent
         private val itemPrice = binding.itemPrice
+        private val itemImage = binding.itemImage
 
         fun link(product: Products) {
             val price = "\$" + product.price.toPlainString()
@@ -24,6 +27,7 @@ class ProductListAdapter(
             itemName.text = product.name
             itemContent.text = product.description
             itemPrice.text = price
+            itemImage.load("https://picsum.photos/536/354")
         }
     }
 
@@ -47,6 +51,7 @@ class ProductListAdapter(
         holder.link(product)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun update(products: List<Products>) {
         this.products.clear()
         this.products.addAll(products)
